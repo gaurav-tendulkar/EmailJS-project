@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Plant Growing Information Form</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      padding: 10px;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 600px;
+      background: white;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      max-height: 90vh;
+      overflow-y: auto;
+    }
+
+    label {
+      font-weight: bold;
+      display: block;
+      margin-top: 10px;
+    }
+
+    input,
+    select,
+    button {
+      width: 100%;
+      padding: 10px;
+      margin: 5px 0;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      font-size: 1rem;
+    }
+
+    button {
+      background-color: #28a745;
+      color: white;
+      border: none;
+      cursor: pointer;
+      font-size: 1.2rem;
+    }
+
+    button:hover {
+      background-color: #218838;
+    }
+
+    /* Responsive Styles */
+    @media (max-width: 768px) {
+      body {
+        height: auto;
+        display: block;
+      }
+
+      .container {
+        max-height: none;
+      }
+
+      input,
+      select,
+      button {
+        font-size: 0.9rem;
+      }
+
+      h2, h3 {
+        font-size: 1.2rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .container {
+        padding: 15px;
+      }
+
+      h2, h3 {
+        font-size: 1.1rem;
+      }
+
+      input,
+      select,
+      button {
+        font-size: 0.8rem;
+      }
+    }
+  </style>
+
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+  <script type="text/javascript">
+    (function () {
+      emailjs.init({
+        publicKey: "hqLtcaH4UF9ALSFxl",
+      });
+    })();
+  </script>
+</head>
+
+<body>
+  <div class="container">
+    <h2>Plant Growing Information Form</h2>
+    <form id="plantForm">
+      <h3>1. User Information</h3>
+      <label>Name:</label>
+      <input type="text" id="name">
+
+      <label>Email (For follow-up responses):</label>
+      <input type="email" id="email" required>
+
+      <label>Location (City/State):</label>
+      <input type="text" id="location" required>
+
+      <h3>2. Growing Space Details</h3>
+      <label>Total Available Space (sq ft or meters):</label>
+      <input type="text" id="total_space" required>
+
+      <label>Length (ft/m):</label>
+      <input type="number" id="length" required>
+
+      <label>Width/Breadth (ft/m):</label>
+      <input type="number" id="width" required>
+
+      <label>Height (if applicable) (ft/m):</label>
+      <input type="number" id="height">
+
+      <label>Type of Growing Space:</label>
+      <select id="space_type">
+        <option>Indoor</option>
+        <option>Balcony</option>
+        <option>Terrace</option>
+        <option>Garden</option>
+        <option>Hydroponic</option>
+        <option>Vertical Garden</option>
+      </select>
+
+      <label>Does the space have a roof or covering?</label>
+      <select id="roof">
+        <option>Yes</option>
+        <option>No</option>
+      </select>
+
+      <label>Does the space have access to natural sunlight?</label>
+      <select id="sunlight_access">
+        <option>Yes</option>
+        <option>No</option>
+      </select>
+
+      <h3>3. Sunlight & Temperature</h3>
+      <label>Daily Sunlight Exposure:</label>
+      <select id="sunlight_exposure">
+        <option>Full Sun</option>
+        <option>Partial Sun</option>
+        <option>Shade</option>
+        <option>Artificial Light</option>
+      </select>
+
+      <label>Sunlight Duration:</label>
+      <select id="sunlight_duration">
+        <option>Less than 2 hrs</option>
+        <option>2-4 hrs</option>
+        <option>4-6 hrs</option>
+        <option>More than 6 hrs</option>
+      </select>
+
+      <label>Time of Sunlight Exposure:</label>
+      <select id="sunlight_time">
+        <option>Morning</option>
+        <option>Afternoon</option>
+        <option>Evening</option>
+      </select>
+
+      <label>Temperature Range in Your Area:</label>
+      <select id="temperature_range">
+        <option>Below 10°C</option>
+        <option>10-20°C</option>
+        <option>20-30°C</option>
+        <option>Above 30°C</option>
+      </select>
+
+      <h3>4. Air Circulation & Support</h3>
+      <label>Is the area well-ventilated?</label>
+      <select id="ventilation">
+        <option>Yes</option>
+        <option>No</option>
+      </select>
+
+      <label>Do you use a fan or ventilation system?</label>
+      <select id="fan">
+        <option>Yes</option>
+        <option>No</option>
+      </select>
+
+      <button type="submit" onclick="sendMail()">Submit</button>
+    </form>
+  </div>
+</body>
+
+</html>
